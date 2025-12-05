@@ -1,27 +1,27 @@
 # Elevator_System_Using_DEVS_formalism
 
-"시뮬레이션" 과목 팀 프로젝트의 일환으로 진행되었습니다.\\
-<DEVS 시뮬레이션을 사용한 엘레베이터 시뮬레이터 구현 및 효율적 운영 알고리즘 탐색> 입니다.\\
-1개월 동안 아이디어 구상 및 시뮬레이션 제작, 알고리즘 적용을 진행하였습니다.\\
+"시뮬레이션" 과목 팀 프로젝트의 일환으로 진행되었습니다. \\
+<DEVS 시뮬레이션을 사용한 엘레베이터 시뮬레이터 구현 및 효율적 운영 알고리즘 탐색> 입니다. \\
+1개월 동안 아이디어 구상 및 시뮬레이션 제작, 알고리즘 적용을 진행하였습니다. \\
 
 # Intro
-실제 엘레베이터 운영 데이터를 구할 수 없는 상황 속 가장 효율적인 운영 알고리즘을 찾기 위해선 시뮬레이션을 구현 후 해당 환경에서 최적의 알고리즘을 찾아야 했습니다.\\
-때문에 확장 가능성을 염두해둔 환경을 구현하고 특정 상황으로 제한해 프로젝트를 진행합니다.\\
-이 프로젝트에선 8개 층, 3개의 엘레베이터를 가진 건물 환경을 가정합니다.\\
+실제 엘레베이터 운영 데이터를 구할 수 없는 상황 속 가장 효율적인 운영 알고리즘을 찾기 위해선 시뮬레이션을 구현 후 해당 환경에서 최적의 알고리즘을 찾아야 했습니다. \\
+때문에 확장 가능성을 염두해둔 환경을 구현하고 특정 상황으로 제한해 프로젝트를 진행합니다. \\
+이 프로젝트에선 8개 층, 3개의 엘레베이터를 가진 건물 환경을 가정합니다. \\
 
 # DEVS 형식 시뮬레이션 구현
-<img width="1388" height="721" alt="Image" src="https://github.com/user-attachments/assets/e4f5eefb-2776-43ad-81c7-95f0bdd87883" />\\
-<img width="695" height="300" alt="Image" src="https://github.com/user-attachments/assets/ee032401-6148-4f99-83bf-013fb1ef5428" />\\
+<img width="1388" height="721" alt="Image" src="https://github.com/user-attachments/assets/e4f5eefb-2776-43ad-81c7-95f0bdd87883" /> \\
+<img width="695" height="300" alt="Image" src="https://github.com/user-attachments/assets/ee032401-6148-4f99-83bf-013fb1ef5428" /> \\
 $Floor_i$ : 지수 분포를 따르는 랜덤 시간 경과 후 승객(현재층, 목적지층, 생성시간) 정보가 생성됩니다. TotalBuffer로 송신됩니다.\\
-<img width="695" height="330" alt="Image" src="https://github.com/user-attachments/assets/cb820547-794e-4809-a29f-49170c317c84" />\\
+<img width="695" height="330" alt="Image" src="https://github.com/user-attachments/assets/cb820547-794e-4809-a29f-49170c317c84" /> \\
 $TotalBuffer$ : Floor를 통해 수신한 승객 정보를 각 층별, 방향(UP,DOWN)별 대기 큐(Global State)에 저장합니다.\\
 $Global\;State$ : Shared memory로서 DEVS 시스템 구현에 있어 용이하게 해줍니다. 하지만 이러한 구조는 DEVS 형식론에 있어 information leakage를 유발할 수 있어 유의해야합니다.\\
-<img width="931" height="437" alt="Image" src="https://github.com/user-attachments/assets/c3b62ed0-5b50-4f4e-8e26-370407ce01b3" />\\
+<img width="931" height="437" alt="Image" src="https://github.com/user-attachments/assets/c3b62ed0-5b50-4f4e-8e26-370407ce01b3" /> \\
 $Controller$ : $Elevator_i$ 객체의 다음 행동(Up,Down,Idle)을 지정해줍니다. $Global\;State$와 $Elevator$ 상태을 고려해 계산됩니다.\\
-<img width="692" height="495" alt="Image" src="https://github.com/user-attachments/assets/58742824-c109-4364-ac4f-c80e170c8dc8" />\\
+<img width="692" height="495" alt="Image" src="https://github.com/user-attachments/assets/58742824-c109-4364-ac4f-c80e170c8dc8" /> \\
 $Elevator_i$ : Controller의 명령을 받아 수행합니다. 수행 절차는 다음과 같습니다. "승객 탑승 -> 명령 수행(1초 대기) -> 승객 하차 -> 명령 요청". \\
 
-<img width="695" height="227" alt="Image" src="https://github.com/user-attachments/assets/90c48116-90cc-41b6-9d98-63be7e71afaa" />\\
+<img width="695" height="227" alt="Image" src="https://github.com/user-attachments/assets/90c48116-90cc-41b6-9d98-63be7e71afaa" /> \\
 모든 객체는 Coupled Model-Building의 계층적 요소로 구성됩니다. \\
 
 # Baseline : ETA 기반 운영 알고리즘
@@ -32,15 +32,15 @@ ETA 기반 운영 알고리즘은 각 호기 별 ETA 비용 Elevator_System_Usin
 1개월 동안 아이디어 구상 및 시뮬레이션 제작, 알고리즘 적용을 진행하였습니다.\\
 
 # DEVS 형식 시뮬레이션 구현
-<img width="1388" height="721" alt="Image" src="https://github.com/user-attachments/assets/e4f5eefb-2776-43ad-81c7-95f0bdd87883" />\\
-<img width="695" height="300" alt="Image" src="https://github.com/user-attachments/assets/ee032401-6148-4f99-83bf-013fb1ef5428" />\\
+<img width="1388" height="721" alt="Image" src="https://github.com/user-attachments/assets/e4f5eefb-2776-43ad-81c7-95f0bdd87883" /> \\
+<img width="695" height="300" alt="Image" src="https://github.com/user-attachments/assets/ee032401-6148-4f99-83bf-013fb1ef5428" /> \\
 $Floor_i$ : 지수 분포를 따르는 랜덤 시간 경과 후 승객(현재층, 목적지층, 생성시간) 정보가 생성됩니다. TotalBuffer로 송신됩니다.\\
-<img width="695" height="330" alt="Image" src="https://github.com/user-attachments/assets/cb820547-794e-4809-a29f-49170c317c84" />\\
+<img width="695" height="330" alt="Image" src="https://github.com/user-attachments/assets/cb820547-794e-4809-a29f-49170c317c84" /> \\
 $TotalBuffer$ : Floor를 통해 수신한 승객 정보를 각 층별, 방향(UP,DOWN)별 대기 큐(Global State)에 저장합니다.\\
 $Global\;State$ : Shared memory로서 DEVS 시스템 구현에 있어 용이하게 해줍니다. 하지만 이러한 구조는 DEVS 형식론에 있어 information leakage를 유발할 수 있어 유의해야합니다.\\
-<img width="931" height="437" alt="Image" src="https://github.com/user-attachments/assets/c3b62ed0-5b50-4f4e-8e26-370407ce01b3" />\\
+<img width="931" height="437" alt="Image" src="https://github.com/user-attachments/assets/c3b62ed0-5b50-4f4e-8e26-370407ce01b3" /> \\
 $Controller$ : $Elevator_i$ 객체의 다음 행동(Up,Down,Idle)을 지정해줍니다. $Global\;State$와 $Elevator$ 상태을 고려해 계산됩니다.\\
-<img width="692" height="495" alt="Image" src="https://github.com/user-attachments/assets/58742824-c109-4364-ac4f-c80e170c8dc8" />\\
+<img width="692" height="495" alt="Image" src="https://github.com/user-attachments/assets/58742824-c109-4364-ac4f-c80e170c8dc8" /> \\
 $Elevator_i$ : Controller의 명령을 받아 수행합니다. 수행 절차는 다음과 같습니다. "승객 탑승 -> 명령 수행(1초 대기) -> 승객 하차 -> 명령 요청". \\
 
 <img width="695" height="227" alt="Image" src="https://github.com/user-attachments/assets/90c48116-90cc-41b6-9d98-63be7e71afaa" />\\
