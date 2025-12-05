@@ -10,8 +10,9 @@
 이 프로젝트에선 8개 층, 3개의 엘레베이터를 가진 건물 환경을 가정합니다.  
 
 # DEVS 형식 시뮬레이션 구현
-<img width="650" height="360" alt="Image" src="https://github.com/user-attachments/assets/e4f5eefb-2776-43ad-81c7-95f0bdd87883" />
-  
+<img width="650" height="360" alt="Image" src="https://github.com/user-attachments/assets/e4f5eefb-2776-43ad-81c7-95f0bdd87883" />  
+
+    
 <img width="350" height="150" alt="Image" src="https://github.com/user-attachments/assets/ee032401-6148-4f99-83bf-013fb1ef5428" />
   
  $Floor_i$ : 지수 분포를 따르는 랜덤 시간 경과 후 승객(현재층, 목적지층, 생성시간) 정보가 생성됩니다. $TotalBuffer$로 송신됩니다.  
@@ -23,7 +24,7 @@
   
 <img width="365" height="215" alt="Image" src="https://github.com/user-attachments/assets/c3b62ed0-5b50-4f4e-8e26-370407ce01b3" />    
   
-$Controller$ : $Elevator_i$ 객체의 다음 행동(Up,Down,Idle)을 지정해줍니다. $Global State$와 $Elevator$ 상태을 고려해 계산됩니다.  
+$Controller$ : $Elevator_i$ 객체의 다음 행동($Up$,$Down$,$Idle$)을 지정해줍니다. $Global State$와 $Elevator$ 상태을 고려해 계산됩니다.  
   
 <img width="350" height="250" alt="Image" src="https://github.com/user-attachments/assets/58742824-c109-4364-ac4f-c80e170c8dc8" />    
   
@@ -32,19 +33,19 @@ $Controller$ : $Elevator_i$ 객체의 다음 행동(Up,Down,Idle)을 지정해�
   
 <img width="350" height="110" alt="Image" src="https://github.com/user-attachments/assets/90c48116-90cc-41b6-9d98-63be7e71afaa" />    
 
- 모든 객체는 Coupled Model-$Building$의 계층적 요소로 구성됩니다.  
+ 모든 객체는 Coupled Model \- $Building$의 계층적 요소로 구성됩니다.  
 
 # Baseline : ETA 기반 운영 알고리즘
 ETA(Estimated Time of Arrival)는 도착 예정 시간을 뜻하며,  
-해당 운영 알고리즘은 요청에 대한 각 호기 별 Score를 계산하여 최소값을 가진 호기가 해당 요청을 처리합니다.  
+해당 운영 알고리즘은 요청에 대한 각 호기 별 $Score$를 계산하여 최소값을 가진 호기가 해당 요청을 처리합니다.  
 <img width="350" height="32" alt="Image" src="https://github.com/user-attachments/assets/e9f2481c-2265-4e50-bc8d-4050620365e1" />  
-$WaitingTime$이 포함된 이유는 공정성을 위함이며 승객의 대기 시간이 늘어남에 따라 Score가 낮아지고 최우선 요청으로 처리될 수 있게 해줍니다.  
+$WaitingTime$이 포함된 이유는 공정성을 위함이며 승객의 대기 시간이 늘어남에 따라 $Score$가 낮아지고 최우선 요청으로 처리될 수 있게 해줍니다.  
 
   1. ETA 계산 로직  
     a. 이미 탑승객이 있는 엘레베이터는 계속 운행하고 이동 중 같은 방향 요청을 처리합니다.  
-    b. 엘레베이터가 비었을때 ( IDLE )  
+    b. 엘레베이터가 비었을때 ( $IDLE$ )  
        물리적 거리 계산 : $ETA=|Target_Floor-Current_Floor|$   
-    c. 엘레베이터가 상승/하강 중일때  
+    c. 엘레베이터가 상승/하강 중일때 ( $UP$,$DOWN$ ) 
         i. 같은 방향의 요청 - $ETA=|Target_Floor-Current_Floor|$  
        ii. 반대 방향의 요청 - $ETA=|Target_Floor-Current_Floor| +2$  
      
@@ -54,11 +55,15 @@ $WaitingTime$이 포함된 이유는 공정성을 위함이며 승객의 대기 
 Input : 건물 전체의 층별 대기열 유무, 각 엘레베이터의 상태 ( 현재 층, 진행 방향, 탑승률, 탑승객 요청층 )  
 Output : 3대에 대한 (UP,DOWN,IDLE) $3^3$가지의 제어 명령  
 
-보상함수: 10*(직전에 운반한 승객 수 ) -  0.1 * (남아 있는 대기열) - 0.05 *(움직였다면)  
+보상함수 $R_t$ : $(P_{served}*10) - (W_{total}*0.1) - (E_{move}*0.05)$  
+$P_{served}$ = 직전에 운반한 승객 수  
+$W_{total}$ = 남아 있는 대기열  
+$E_{move}$ = 이전 명령으로 인해 움직였다면    
 
 # 평가 Baseline, DDQN
 <img width="350" height="235" alt="Image" src="https://github.com/user-attachments/assets/ab2ba87d-5eab-422a-8906-ba8036f85116" />  
 <Baseline 시각화>  
+
 <img width="350" height="235" alt="image" src="https://github.com/user-attachments/assets/ce42c246-42ef-4ed4-9c04-fa4f86158d99" />  
 <DDQN 시각화>  
 
