@@ -28,7 +28,8 @@
   
 <img width="350" height="250" alt="Image" src="https://github.com/user-attachments/assets/58742824-c109-4364-ac4f-c80e170c8dc8" />    
 
- $ Elevator_i $ : Controller의 명령을 받아 수행합니다. 수행 절차는 다음과 같습니다. "승객 탑승 -> 명령 수행(1초 대기) -> 승객 하차 -> 명령 요청".  
+ $ Elevator_i $ : Controller의 명령을 받아 수행합니다. 수행 절차는 다음과 같습니다.   
+ "승객 탑승 -> 명령 수행(1초 대기) -> 승객 하차 -> 명령 요청".  
   
 <img width="350" height="110" alt="Image" src="https://github.com/user-attachments/assets/90c48116-90cc-41b6-9d98-63be7e71afaa" />    
 
