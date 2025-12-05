@@ -1,8 +1,7 @@
-# Elevator_System_Using_DEVS_formalism
+# <DEVS 시뮬레이션을 사용한 엘레베이터 시뮬레이터 구현 및 효율적 운영 알고리즘 탐색> 
 
 "시뮬레이션" 과목 팀 프로젝트의 일환으로 진행되었습니다.  
-<DEVS 시뮬레이션을 사용한 엘레베이터 시뮬레이터 구현 및 효율적 운영 알고리즘 탐색> 입니다.  
-1개월 동안 아이디어 구상 및 시뮬레이션 제작, 알고리즘 적용을 진행하였습니다.  
+1개월 동안 팀원 한 명과 함께 아이디어 구상 및 시뮬레이션 제작, 알고리즘 적용을 진행하였습니다.  
 
 # Intro
 실제 엘레베이터 운영 데이터를 구할 수 없는 상황 속 가장 효율적인 운영 알고리즘을 찾기 위해선 시뮬레이션을 구현 후 해당 환경에서 최적의 알고리즘을 찾아야 했습니다.  
@@ -14,7 +13,7 @@
 
     
 <img width="350" height="150" alt="Image" src="https://github.com/user-attachments/assets/ee032401-6148-4f99-83bf-013fb1ef5428" />
-  
+    
  $Floor_i$ : 지수 분포를 따르는 랜덤 시간 경과 후 승객(현재층, 목적지층, 생성시간) 정보가 생성됩니다. $TotalBuffer$로 송신됩니다.  
    
 <img width="350" height="165" alt="Image" src="https://github.com/user-attachments/assets/cb820547-794e-4809-a29f-49170c317c84" />    
@@ -45,9 +44,9 @@ ETA(Estimated Time of Arrival)는 도착 예정 시간을 뜻하며,
     a. 이미 탑승객이 있는 엘레베이터는 계속 운행하고 이동 중 같은 방향 요청을 처리합니다.  
     b. 엘레베이터가 비었을때 ( $IDLE$ )  
              물리적 거리 계산 : $ETA=|Target_Floor-Current_Floor|$   
-    c. 엘레베이터가 상승/하강 중일때 ( $UP$,$DOWN$ ) 
-              i. 같은 방향의 요청 - $ETA=|Target_Floor-Current_Floor|$  
-             ii. 반대 방향의 요청 - $ETA=|Target_Floor-Current_Floor| +2$  
+    c. 엘레베이터가 상승/하강 중일때 ( $UP$, $DOWN$ )  
+          i. 같은 방향의 요청 - $ETA=|Target_Floor-Current_Floor|$   
+          ii. 반대 방향의 요청 - $ETA=|Target_Floor-Current_Floor| +2$   
      
 # 강화학습 모델 DDQN 도입
 <img width="700" height="350" alt="Image" src="https://github.com/user-attachments/assets/e05767ab-7aff-4545-8c0f-7f2880dab6cd" />
@@ -70,8 +69,8 @@ ETA(Estimated Time of Arrival)는 도착 예정 시간을 뜻하며,
   </thead>
   <tbody>
   <tr width="600px">
-      <td>
-          <img width="350" height="235" alt="Image" src="https://github.com/user-attachments/assets/ab2ba87d-5eab-422a-8906-ba8036f85116" />  
+      <td> 
+          <img width="350" height="235" alt="Image" src="https://github.com/user-attachments/assets/9197fa86-df9f-4e17-8a39-10e92f3c749" />  
 </td>
 <td>
     <img width="350" height="235" alt="image" src="https://github.com/user-attachments/assets/05b8b41a-2930-4cd9-a87f-f7a9be72b86a" />  
