@@ -10,9 +10,10 @@
 이 프로젝트에선 8개 층, 3개의 엘레베이터를 가진 건물 환경을 가정합니다.  
 
 # DEVS 형식 시뮬레이션 구현
-<img width="650" height="360" alt="Image" src="https://github.com/user-attachments/assets/e4f5eefb-2776-43ad-81c7-95f0bdd87883" />    
-   
-<img width="350" height="150" alt="Image" src="https://github.com/user-attachments/assets/ee032401-6148-4f99-83bf-013fb1ef5428" />    
+<img width="650" height="360" alt="Image" src="https://github.com/user-attachments/assets/e4f5eefb-2776-43ad-81c7-95f0bdd87883" />
+  
+<img width="350" height="150" alt="Image" src="https://github.com/user-attachments/assets/ee032401-6148-4f99-83bf-013fb1ef5428" />
+  
   
  $ Floor_i $ : 지수 분포를 따르는 랜덤 시간 경과 후 승객(현재층, 목적지층, 생성시간) 정보가 생성됩니다. TotalBuffer로 송신됩니다.  
    
