@@ -50,10 +50,11 @@ $WaitingTime$이 포함된 이유는 공정성을 위함이며 승객의 대기 
        ii. 반대 방향의 요청 - $ETA=|Target_Floor-Current_Floor| +2$  
      
 # 강화학습 모델 DDQN 도입
-<img width="700" height="350" alt="Image" src="https://github.com/user-attachments/assets/e05767ab-7aff-4545-8c0f-7f2880dab6cd" />    
+<img width="700" height="350" alt="Image" src="https://github.com/user-attachments/assets/e05767ab-7aff-4545-8c0f-7f2880dab6cd" />
+  
  $Controller$를 DDQN으로 바꿔넣는다.  
 Input : 건물 전체의 층별 대기열 유무, 각 엘레베이터의 상태 ( 현재 층, 진행 방향, 탑승률, 탑승객 요청층 )  
-Output : 3대에 대한 (UP,DOWN,IDLE) $3^3$가지의 제어 명령  
+Output : 3대에 대한 ($UP$,$DOWN$,$IDLE$) $3^3$ 가지의 제어 명령  
 
 보상함수 $R_t$ : $(P_{served}*10) - (W_{total}*0.1) - (E_{move}*0.05)$  
 $P_{served}$ = 직전에 운반한 승객 수  
@@ -61,11 +62,26 @@ $W_{total}$ = 남아 있는 대기열
 $E_{move}$ = 이전 명령으로 인해 움직였다면    
 
 # 평가 Baseline, DDQN
-<img width="350" height="235" alt="Image" src="https://github.com/user-attachments/assets/ab2ba87d-5eab-422a-8906-ba8036f85116" />  
-<Baseline 시각화>  
+<table>
+  <thead>
+    <tr>
+      <th width="500px"> <Baseline 시각화>  </th>
+      <th width="500px"><DDQN 시각화> </th>
+    </tr>
+  </thead>
+  <tbody>
+  <tr width="600px">
+      <td>
+          <img width="350" height="235" alt="Image" src="https://github.com/user-attachments/assets/ab2ba87d-5eab-422a-8906-ba8036f85116" />  
+</td>
+<td>
+    <img width="350" height="235" alt="image" src="https://github.com/user-attachments/assets/ce42c246-42ef-4ed4-9c04-fa4f86158d99" />  
+</td>
 
-<img width="350" height="235" alt="image" src="https://github.com/user-attachments/assets/ce42c246-42ef-4ed4-9c04-fa4f86158d99" />  
-<DDQN 시각화>  
+</tr>
+  </tbody>
+</table>
+ 
 
 |운영 알고리즘|평균 승객 운반 (명)|평균 대기 시간 (초)|평균 탑승 시간 (초)|평균 운행 거리 (층)|  
 |:------|:---:|:---:|:---:|:---:|  
