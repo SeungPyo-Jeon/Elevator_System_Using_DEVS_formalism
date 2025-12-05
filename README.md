@@ -65,8 +65,8 @@ $E_{move}$ = 이전 명령으로 인해 움직였다면
 <table>
   <thead>
     <tr>
-      <th width="500px"> <Baseline 시각화>  </th>
-      <th width="500px"><DDQN 시각화> </th>
+      <th width="500px">Baseline 시각화</th>
+      <th width="500px">DDQN 시각화 </th>
     </tr>
   </thead>
   <tbody>
@@ -77,7 +77,6 @@ $E_{move}$ = 이전 명령으로 인해 움직였다면
 <td>
     <img width="350" height="235" alt="image" src="https://github.com/user-attachments/assets/ce42c246-42ef-4ed4-9c04-fa4f86158d99" />  
 </td>
-
 </tr>
   </tbody>
 </table>
@@ -88,7 +87,7 @@ $E_{move}$ = 이전 명령으로 인해 움직였다면
 |Baseline|464.5|3.06|2.17|1286.6|  
 |DDQN|469.9|**2.85**|2.18|**1174.8**|  
 
-분석  
+**분석**  
 평균 운행 거리에서 Baseline 대비 DDQN 알고리즘이 100 계층 정도를 덜 움직였고, 이것이 평균 대기 시간을 더 줄일 수 있게 하였다고 추정되었다.  
 
 **왜 강화학습 보상함수를 평가지표로 지정하지 않았는가?**
