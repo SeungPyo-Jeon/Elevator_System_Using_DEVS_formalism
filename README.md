@@ -11,7 +11,7 @@
 # DEVS 형식 시뮬레이션 구현
 <img width="650" height="360" alt="Image" src="https://github.com/user-attachments/assets/e4f5eefb-2776-43ad-81c7-95f0bdd87883" />  
 
-    
+    .  
 <img width="350" height="150" alt="Image" src="https://github.com/user-attachments/assets/ee032401-6148-4f99-83bf-013fb1ef5428" />
     
  $Floor_i$ : 지수 분포를 따르는 랜덤 시간 경과 후 승객(현재층, 목적지층, 생성시간) 정보가 생성됩니다. $TotalBuffer$로 송신됩니다.  
@@ -69,8 +69,8 @@ ETA(Estimated Time of Arrival)는 도착 예정 시간을 뜻하며,
   </thead>
   <tbody>
   <tr width="600px">
-      <td> 
-          <img width="350" height="235" alt="Image" src="https://github.com/user-attachments/assets/9197fa86-df9f-4e17-8a39-10e92f3c749" />  
+      <td>
+          <img width="350" height="235" alt="Image" src="https://github.com/user-attachments/assets/289e0ef4-1c17-4f53-b98c-b094eb74f92d" />  
 </td>
 <td>
     <img width="350" height="235" alt="image" src="https://github.com/user-attachments/assets/05b8b41a-2930-4cd9-a87f-f7a9be72b86a" />  
