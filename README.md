@@ -39,27 +39,26 @@ $Controller$ : $Elevator_i$ 객체의 다음 행동($Up$,$Down$,$Idle$)을 지�
 ETA(Estimated Time of Arrival)는 도착 예정 시간을 뜻하며,  
 해당 운영 알고리즘은 요청에 대한 각 호기 별 $Score$를 계산하여 최소값을 가진 호기가 해당 요청을 처리합니다.  
 <img width="350" height="32" alt="Image" src="https://github.com/user-attachments/assets/e9f2481c-2265-4e50-bc8d-4050620365e1" />  
-$WaitingTime$이 포함된 이유는 공정성을 위함이며 승객의 대기 시간이 늘어남에 따라 $Score$가 낮아지고 최우선 요청으로 처리될 수 있게 해줍니다.  
+- $WaitingTime$이 포함된 이유는 공정성을 위함이며 승객의 대기 시간이 늘어남에 따라 $Score$가 낮아지고 최우선 요청으로 처리될 수 있게 해줍니다.  
 
   1. ETA 계산 로직  
     a. 이미 탑승객이 있는 엘레베이터는 계속 운행하고 이동 중 같은 방향 요청을 처리합니다.  
     b. 엘레베이터가 비었을때 ( $IDLE$ )  
-       물리적 거리 계산 : $ETA=|Target_Floor-Current_Floor|$   
+             물리적 거리 계산 : $ETA=|Target_Floor-Current_Floor|$   
     c. 엘레베이터가 상승/하강 중일때 ( $UP$,$DOWN$ ) 
-        i. 같은 방향의 요청 - $ETA=|Target_Floor-Current_Floor|$  
-       ii. 반대 방향의 요청 - $ETA=|Target_Floor-Current_Floor| +2$  
+              i. 같은 방향의 요청 - $ETA=|Target_Floor-Current_Floor|$  
+             ii. 반대 방향의 요청 - $ETA=|Target_Floor-Current_Floor| +2$  
      
 # 강화학습 모델 DDQN 도입
 <img width="700" height="350" alt="Image" src="https://github.com/user-attachments/assets/e05767ab-7aff-4545-8c0f-7f2880dab6cd" />
-  
+    
  $Controller$를 DDQN으로 바꿔넣는다.  
-Input : 건물 전체의 층별 대기열 유무, 각 엘레베이터의 상태 ( 현재 층, 진행 방향, 탑승률, 탑승객 요청층 )  
-Output : 3대에 대한 ($UP$,$DOWN$,$IDLE$) $3^3$ 가지의 제어 명령  
-
-보상함수 $R_t$ : $(P_{served}*10) - (W_{total}*0.1) - (E_{move}*0.05)$  
-$P_{served}$ = 직전에 운반한 승객 수  
-$W_{total}$ = 남아 있는 대기열  
-$E_{move}$ = 이전 명령으로 인해 움직였다면    
+- Input : 건물 전체의 층별 대기열 유무, 각 엘레베이터의 상태 ( 현재 층, 진행 방향, 탑승률, 탑승객 요청층 )  
+- Output : 3대에 대한 ($UP$, $DOWN$, $IDLE$) $3^3$ 가지의 제어 명령  
+- 보상함수 $R_t$ : $(P_{served}*10) - (W_{total}*0.1) - (E_{move}*0.05)$  
+- $P_{served}$ = 직전에 운반한 승객 수  
+- $W_{total}$ = 남아 있는 대기열  
+- $E_{move}$ = 이전 명령으로 인해 움직였다면    
 
 # 평가 Baseline, DDQN
 <table>
@@ -75,7 +74,7 @@ $E_{move}$ = 이전 명령으로 인해 움직였다면
           <img width="350" height="235" alt="Image" src="https://github.com/user-attachments/assets/ab2ba87d-5eab-422a-8906-ba8036f85116" />  
 </td>
 <td>
-    <img width="350" height="235" alt="image" src="https://github.com/user-attachments/assets/ce42c246-42ef-4ed4-9c04-fa4f86158d99" />  
+    <img width="350" height="235" alt="image" src="https://github.com/user-attachments/assets/05b8b41a-2930-4cd9-a87f-f7a9be72b86a" />  
 </td>
 </tr>
   </tbody>
@@ -88,6 +87,10 @@ $E_{move}$ = 이전 명령으로 인해 움직였다면
 |DDQN|469.9|**2.85**|2.18|**1174.8**|  
 
 **분석**  
-평균 운행 거리에서 Baseline 대비 DDQN 알고리즘이 100 계층 정도를 덜 움직였고, 이것이 평균 대기 시간을 더 줄일 수 있게 하였다고 추정되었다.  
+- 평균 운행 거리에서 Baseline 대비 DDQN 알고리즘이 100 계층 정도를 덜 움직였고, 이것이 평균 대기 시간을 더 줄일 수 있게 하였다고 추정됩니다.
 
 **왜 강화학습 보상함수를 평가지표로 지정하지 않았는가?**
+- 엔지니어링 관점에서 'Sparse Reward' 문제입니다. 평가지표는 에피소드가 끝나거나 승객이 하차해야만 알 수 있어 피드백이 너무 늦습니다.  
+학습 효율을 높이기 위해, 수학적으로 총 대기 시간 최소화와 동치인 '매 스텝의 대기열 길이'를 보상으로 주어 즉각적인 피드백(Dense Reward)이 가능하게 했습니다.  
+- 연구적 관점에서 'Reward Hacking'을 방지하기 위함입니다. 단순히 평균 수치만 보상으로 주면, 에이전트가 전체 평균을 낮추기 위해 특정 승객(Outlier)을 고의로 배제하는 등 비윤리적인 최적화를 할 위험이 있습니다.  
+모델이 '일반화된 운행 로직'을 배우길 원했기 때문에, 평가지표 그 자체가 아닌 물리적 상태(State) 기반의 보상을 사용했습니다.  
