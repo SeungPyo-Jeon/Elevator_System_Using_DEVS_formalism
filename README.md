@@ -11,11 +11,11 @@
 
 # DEVS 형식 시뮬레이션 구현
 <img width="650" height="360" alt="Image" src="https://github.com/user-attachments/assets/e4f5eefb-2776-43ad-81c7-95f0bdd87883" />    
-  
+   
 <img width="350" height="150" alt="Image" src="https://github.com/user-attachments/assets/ee032401-6148-4f99-83bf-013fb1ef5428" />    
-
- $ Floor_i $ : 지수 분포를 따르는 랜덤 시간 경과 후 승객(현재층, 목적지층, 생성시간) 정보가 생성됩니다. TotalBuffer로 송신됩니다.  
   
+ $ Floor_i $ : 지수 분포를 따르는 랜덤 시간 경과 후 승객(현재층, 목적지층, 생성시간) 정보가 생성됩니다. TotalBuffer로 송신됩니다.  
+   
 <img width="350" height="165" alt="Image" src="https://github.com/user-attachments/assets/cb820547-794e-4809-a29f-49170c317c84" />    
 
  $ TotalBuffer $ : Floor를 통해 수신한 승객 정보를 각 층별, 방향(UP,DOWN)별 대기 큐(Global State)에 저장합니다.  
