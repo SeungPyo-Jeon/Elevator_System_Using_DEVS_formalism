@@ -9,8 +9,7 @@
 이 프로젝트에선 8개 층, 3개의 엘레베이터를 가진 건물 환경을 가정합니다.  
 
 # DEVS 형식 시뮬레이션 구현
-<img width="650" height="360" alt="Image" src="https://github.com/user-attachments/assets/e4f5eefb-2776-43ad-81c7-95f0bdd87883" />  
-<img width="650" height="360" alt="Image" src="https://github.com/user-attachments/assets/6a5ec9d0-131d-4afd-a345-4b18e480a6c9" />
+<img width="650" height="360" alt="Image" src="https://github.com/user-attachments/assets/6a5ec9d0-131d-4afd-a345-4b18e480a6c9" />  
     .  
 <img width="350" height="150" alt="Image" src="https://github.com/user-attachments/assets/ee032401-6148-4f99-83bf-013fb1ef5428" />
     
@@ -49,7 +48,7 @@ ETA(Estimated Time of Arrival)는 도착 예정 시간을 뜻하며,
           ii. 반대 방향의 요청 - $ETA=|Target_Floor-Current_Floor| +2$   
      
 # 강화학습 모델 DDQN 도입
-<img width="700" height="350" alt="Image" src="https://github.com/user-attachments/assets/e05767ab-7aff-4545-8c0f-7f2880dab6cd" />
+<img width="700" height="350" alt="Image" src="https://github.com/user-attachments/assets/b98577fc-fe34-4fdf-a6dc-aa401879e92b" />
     
  $Controller$를 DDQN으로 바꿔넣는다.  
 - Input : 건물 전체의 층별 대기열 유무, 각 엘레베이터의 상태 ( 현재 층, 진행 방향, 탑승률, 탑승객 요청층 )  
