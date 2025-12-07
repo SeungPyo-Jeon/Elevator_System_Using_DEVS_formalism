@@ -10,7 +10,7 @@
 
 # DEVS 형식 시뮬레이션 구현
 <img width="650" height="360" alt="Image" src="https://github.com/user-attachments/assets/e4f5eefb-2776-43ad-81c7-95f0bdd87883" />  
-
+<img width="650" height="360" alt="Image" src="https://github.com/user-attachments/assets/6a5ec9d0-131d-4afd-a345-4b18e480a6c9" />
     .  
 <img width="350" height="150" alt="Image" src="https://github.com/user-attachments/assets/ee032401-6148-4f99-83bf-013fb1ef5428" />
     
